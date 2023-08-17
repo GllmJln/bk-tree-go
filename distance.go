@@ -51,7 +51,7 @@ func calculateDistance(a string, b string) int {
 	* whilst ensuring the operations don't fall out of the limits of the matrix indices
 	 */
 
-	maxDist := aLength + bLength + 1
+	maxDist := aLength + bLength
 	for i := 0; i <= aLength; i++ {
 		matrix[i+1][1] = i
 		matrix[i+1][0] = maxDist
@@ -62,7 +62,7 @@ func calculateDistance(a string, b string) int {
 		matrix[0][j+1] = maxDist
 	}
 
-	// // then we fill in the matrix
+	// then we fill in the matrix
 	for i := 1; i <= aLength; i++ {
 		db := 0
 		for j := 1; j <= bLength; j++ {
