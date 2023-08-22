@@ -1,5 +1,7 @@
+// Calculate the distance between two strings using the Damerau-Levenshtein distance
+package distance
+
 // At lot of the code heavily inspired/stolen from https://github.com/lmas/Damerau-Levenshtein and https://en.wikipedia.org/wiki/Damerau%E2%80%93Levenshtein_distance
-package main
 
 func min(n ...int) int {
 	m := n[0]
@@ -11,7 +13,7 @@ func min(n ...int) int {
 	return m
 }
 
-func calculateDistance(a string, b string) int {
+func CalculateDistance(a string, b string) int {
 	aLength, bLength := len(a), len(b)
 
 	//make a matrix aLength x bLength - adding two columns for the edge and empty string

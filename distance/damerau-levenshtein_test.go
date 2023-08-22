@@ -1,4 +1,4 @@
-package main
+package distance
 
 import "testing"
 
@@ -27,7 +27,7 @@ var samples = []sample{
 
 func TestCalculateDistance(t *testing.T) {
 	for _, v := range samples {
-		calc := calculateDistance(v.a, v.b)
+		calc := CalculateDistance(v.a, v.b)
 		if calc != v.distance {
 			t.Errorf("Error for %v and %v, expected %v but got %v", v.a, v.b, v.distance, calc)
 		}
@@ -36,13 +36,13 @@ func TestCalculateDistance(t *testing.T) {
 
 func BenchmarkCalculateDistanceLongString(b *testing.B) {
 	for n := 0; n < b.N; n++ {
-		calculateDistance("this is quite a long string", "this is also quite a long string")
+		CalculateDistance("this is quite a long string", "this is also quite a long string")
 	}
 }
 
 func BenchmarkCalculateDistanceVeryLongString(b *testing.B) {
 	for n := 0; n < b.N; n++ {
-		calculateDistance(
+		CalculateDistance(
 			"this is very much a super long string, it is actually quite slow to do this because of the operation time",
 			"this is another super long string, testing this benchmark is actually quite a lot to process in terms of the matrix",
 		)
@@ -51,6 +51,6 @@ func BenchmarkCalculateDistanceVeryLongString(b *testing.B) {
 
 func BenchmarkCalculateDistanceShort(b *testing.B) {
 	for n := 0; n < b.N; n++ {
-		calculateDistance("flash", "lash")
+		CalculateDistance("flash", "lash")
 	}
 }

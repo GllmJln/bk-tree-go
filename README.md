@@ -8,5 +8,3 @@ Code heavily inspired/stolen from:
 
 - The [Demeray-Levenshtein go pkg](https://pkg.go.dev/github.com/lmas/Damerau-Levenshtein)
 - The [Demeray-Levenshtein Wikipedia article](https://en.wikipedia.org/wiki/Damerau%E2%80%93Levenshtein_distance)
-
-Currently a work in progress. Only the distance calculation is implemented.
