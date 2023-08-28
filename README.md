@@ -21,10 +21,53 @@ I then built a simple cli to call the program. In order to use the program, pipe
 
 A testfile is supplied in the repo to showcase example use.
 
-Usage:
+### Usage
+
+- **Without providing a tolerance**
+
+```sh
+cat testfile | ./bk-treego -s dawg
+```
+
+<details>
+<summary>Output</summary>
+
+```
+dog
+cat
+lion
+mouse
+tiger
+turtle
+elephant
+```
+
+</details>
+
+- **Providing a tolerance**:
 
 ```sh
 cat testfile | ./bk-tree-go -s dawg -t 2
-# Output:
+```
+
+<details>
+<summary>Output:</summary>
+```sh
 dog
 ```
+ </details>
+
+_Note the output is sorted by distance, therefore it is possible to get the closest match using `head`_
+
+```sh
+cat testfile | ./bk-tree-go -s dawg | head -1
+```
+
+<details>
+<summary>Output:</summary>
+
+```sh
+dog
+```
+
+</details>

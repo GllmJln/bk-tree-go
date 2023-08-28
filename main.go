@@ -3,8 +3,9 @@ package main
 import (
 	"flag"
 	"fmt"
-	"io/ioutil"
+	"io"
 	"os"
+	"sort"
 	"strings"
 
 	bktree "github.com/gllmjln/bk-tree-go/bk-tree"
@@ -20,7 +21,7 @@ func main() {
 		os.Exit(1)
 	}
 
-	bytes, _ := ioutil.ReadAll(os.Stdin)
+	bytes, _ := io.ReadAll(os.Stdin)
 	str := string(bytes)
 
 	targetPtr := flag.String("s", "", "the string to find.")
@@ -41,7 +42,14 @@ func main() {
 
 	found := bkt.Search(*targetPtr, *tolerancePtr)
 
-	format := strings.Join(found, "\n")
+	sort.SliceStable(found, func(i, j int) bool { return found[i].Distance < found[j].Distance })
+
+	sortedResult := make([]string, 0)
+	for _, wrd := range found {
+		sortedResult = append(sortedResult, wrd.Word)
+	}
+
+	format := strings.Join(sortedResult, "\n")
 
 	fmt.Println(format)
 }

@@ -12,6 +12,11 @@ type BKTree struct {
 	distanceFunction DistanceFunction
 }
 
+type Result struct {
+	Word     string
+	Distance int
+}
+
 func NewBKTree(d DistanceFunction) *BKTree {
 	return &BKTree{
 		distanceFunction: d,
@@ -26,8 +31,8 @@ func (t *BKTree) AddWord(wrd string) {
 	}
 }
 
-func (t *BKTree) Search(w string, tolerance int) []string {
-	r := make([]string, 0)
+func (t *BKTree) Search(w string, tolerance int) []Result {
+	r := make([]Result, 0)
 	if t.root == nil {
 		return r
 	}
@@ -38,7 +43,7 @@ func (t *BKTree) Search(w string, tolerance int) []string {
 		candidates = candidates[1:]
 		dist := t.distanceFunction(w, c.word)
 		if dist <= tolerance {
-			r = append(r, c.word)
+			r = append(r, Result{Word: c.word, Distance: dist})
 		}
 		low, high := dist-tolerance, dist+tolerance
 		for d, n := range c.children {
