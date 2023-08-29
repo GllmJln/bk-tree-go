@@ -52,10 +52,12 @@ cat testfile | ./bk-tree-go -s dawg -t 2
 
 <details>
 <summary>Output:</summary>
-```sh
+
+```
 dog
 ```
- </details>
+
+</details>
 
 _Note the output is sorted by distance, therefore it is possible to get the closest match using `head`_
 
@@ -66,7 +68,7 @@ cat testfile | ./bk-tree-go -s dawg | head -1
 <details>
 <summary>Output:</summary>
 
-```sh
+```
 dog
 ```
 
